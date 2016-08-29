@@ -1,0 +1,73 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        tr ,td,th{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">试卷列表</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>科目</th>
+                                        </tr>
+                                        </thead>
+                                    <foreach name="list" item="vo">
+                                    <tbody>
+                                        <tr>
+                                            <td>{$vo['id']}</td>
+                                            <td><a href="__URL__/paper/id/{$vo['id']}/name/{$vo['name']}">{$vo['name']}</a></td>
+                                        </tr>
+                                    </tbody>
+                                    </foreach>
+                                    </table>
+                                </div>
+                                <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseThree').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        tr ,td,th{
+            text-align: center;
+        }
+        #footer {
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="__URL__/index">试卷列表</a></li>
+                        <li><a href="#">{$subject}</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="text-align: center;font-size: 24px;">
+                            {$subject}
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>题目</td>
+                                        <td>题型</td>
+                                        <td>ABC卷</td>
+                                        <td>操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <foreach name="list" item="vo" key="k">
+                                    <tr>
+                                        <td>{$k+1}</td>
+                                        <td><a href="__URL__/edit_paper/id/{$vo['id']}" id="">{$vo['s_title']}</a></td>
+                                        <td>
+                                            <if condition="$vo['title_type'] eq 1">单选题</if>
+                                            <if condition="$vo['title_type'] eq 2">多选题</if>
+                                            <if condition="$vo['title_type'] eq 3">判断题</if>
+                                            <if condition="$vo['title_type'] eq 4">填空题</if>
+                                            <if condition="$vo['title_type'] eq 5">简答题</if>
+                                        </td>
+                                        <td>{$vo['paper_type']}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="__URL__/edit_paper/id/{$vo['id']}">编辑</a>
+                                            <a class="btn btn-info" href="__URL__/delete_paper/id/{$vo['id']}" onclick="return confirm('你确定要删除吗？')">删除</a>
+                                        </td>
+                                    </tr>
+                                </foreach>
+                                </tbody>
+                            </table>
+                            <!-- 分页-->
+                            <div class="row">
+                                <div class="col-md-5"></div>
+                                <div class="col-md-7">
+                                    <ul class="pagination">
+                                        {$page}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseThree').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });
+</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

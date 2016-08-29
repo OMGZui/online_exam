@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        tr, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">添加试卷</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b style="color: red;">注意：“选项”内容和“答案”内容以英文逗号分隔；填空题没有“选项”；简答题只需要写题目即可</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <form action="__URL__/add_paper_do" method="post">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="s_title" placeholder="题目">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="options" placeholder="选项">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="answer" placeholder="答案">
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <!--
+                                                                                            <input type="text" class="form-control" name="title_type" placeholder="题型">
+                                                -->
+                                                题型：
+                                                <select name="title_type" class="btn btn-default">
+                                                    <option value="1">单选题</option>
+                                                    <option value="2">多选题</option>
+                                                    <option value="3">判断题</option>
+                                                    <option value="4">填空题</option>
+                                                    <option value="5">简答题</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <!--
+                                                                                            <input type="text" class="form-control" name="subject_id" placeholder="科目id">
+                                                -->
+                                                试卷：
+                                                <select name="subject_id" class="btn btn-default">
+                                                    <option value="1">大学生计算机基础</option>
+                                                    <option value="2">计算机组成原理</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <!--
+                                                                                            <input type="text" class="form-control" name="paper_type" placeholder="ABC卷">
+                                                -->
+                                                ABC卷：
+                                                <select name="paper_type" class="btn btn-default">
+                                                    <option value="1">A</option>
+                                                    <option value="2">B</option>
+                                                    <option value="3">C</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>&nbsp;</label>
+                                                <button class="btn btn-info" type="submit">提交</button>
+                                            </div>
+
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseThree').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

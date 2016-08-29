@@ -1,0 +1,39 @@
+/****** 头与尾********/
+#header .navbar-brand {
+    font-size: 34px;
+    line-height: 60px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#footer p{
+    text-align: center;
+    color: black;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #footer{
+        position: static;
+    }
+}
+/******* 分页样式******/
+.first, .prev, .next, .end, .num, .current {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.current {
+    color: red;
+}
+
+

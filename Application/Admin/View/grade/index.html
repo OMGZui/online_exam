@@ -1,0 +1,144 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        #header .navbar-brand {
+            font-size: 34px;
+            line-height: 60px;
+        }
+
+        #footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        #footer p{
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">成绩管理</a></li>
+                        <li><a href="#">成绩列表</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <form class="bs-example bs-example-form" role="form" action="__URL__/search" method="post">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-sm " tabindex="-1"><span >学号</span></button>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="text" class="form-control" name="username" style="width: 30%">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-sm " tabindex="-1"><span >姓名</span></button>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="text" class="form-control" name="name" style="width: 30%">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-sm " tabindex="-1"><span >成绩</span></button>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="text" class="form-control"  name="grade1" style="width: 30%">
+                                    -
+                                    <input type="text" class="form-control"  name="grade2" style="width: 30%">
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm " tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>学号</th>
+                                                    <th>姓名</th>
+                                                    <th>科目</th>
+                                                    <th>成绩</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <if condition="$rs2['state'] lt 2">
+                                                <foreach name="list" item="vo">
+                                                    <tr>
+                                                        <td>{$vo['username']}</td>
+                                                        <td>{$vo['name']}</td>
+                                                        <td><if condition="$vo['subject_id'] eq 1">大学生计算机基础</if><if condition="$vo['subject_id'] eq 2">计算机组成原理</if></td>
+                                                        <td>{$vo['grade']}</td>
+                                                    </tr>
+                                                </foreach>
+                                                </if>
+                                                <if condition="$rs2['state'] eq 2">
+                                                <foreach name="list1" item="vo">
+                                                    <tr>
+                                                        <td>{$vo['username']}</td>
+                                                        <td>{$vo['name']}</td>
+                                                        <td><if condition="$vo['subject_id'] eq 1">大学生计算机基础</if><if condition="$vo['subject_id'] eq 2">计算机组成原理</if></td>
+                                                        <td>{$vo['grade']}</td>
+                                                    </tr>
+                                                </foreach>
+                                                </if>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                                <!-- 分页-->
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-7">
+                                        <ul class="pagination">
+                                            {$page}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseFour').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

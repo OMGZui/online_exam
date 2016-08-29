@@ -1,0 +1,132 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        tr, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">试卷管理</a></li>
+                        <li><a href="#">试卷列表</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <form class="form-horizontal" role="form" action="__URL__/edit_paper_do"
+                                              method="post">
+                                            <foreach name="list" item="vo">
+                                            </foreach>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    id
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="" disabled="disabled"
+                                                           class="form-control" value="{$vo['id']}">
+                                                    <input type="hidden" value="{$vo['id']}" name="id">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    题目
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="s_title" class="form-control"
+                                                           value="{$vo['s_title']}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    题型
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="title_type" class="form-control"
+                                                           value="<if condition="$vo['title_type'] eq 1">单选题</if><if condition="$vo['title_type'] eq 2">多选题</if><if condition="$vo['title_type'] eq 3">判断题</if><if condition="$vo['title_type'] eq 4">填空题</if>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    选项
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="options" class="form-control"
+                                                           value="{$vo['options']}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    答案
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="answer" class="form-control"
+                                                           value="{$vo['answer']}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    ABC卷
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="paper_type" class="form-control"
+                                                           value="{$vo['paper_type']}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                </label>
+
+                                                <div class="col-md-9">
+                                                    <input type="submit" class="btn btn-info" value="提交">
+                                                    <a class="btn btn-info" href="__URL__/index">返回</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseThree').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

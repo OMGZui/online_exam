@@ -1,0 +1,147 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台模板管理系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/style2.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/Admin/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/Admin/bootstrap.min.js"></script>
+    <style>
+        /*******表格样式*******/
+        #footer {
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<include file="Public:page_header"/>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <include file="Public:page_left"/>
+            <div class="col-md-10">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li><a>当前位置</a></li>
+                        <li><a href="#">学生管理</a></li>
+                        <li><a href="#">学生列表</a></li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <form class="bs-example bs-example-form" role="form" action="__URL__/search" method="post">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-btn">
+                                        <button type="button"  class="btn btn-sm " tabindex="-1"><span>学号</span></button>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="text" name="username" class="form-control" style="width: 30%">
+
+                                    <div class="input-group-btn">
+                                        <button type="button"  class="btn btn-sm " tabindex="-1"><span>姓名</span></button>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="text" name="name" class="form-control" style="width: 30%">
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm " tabindex="-1"><span
+                                                class="glyphicon glyphicon-search"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>学号</th>
+                                                    <th>姓名</th>
+                                                    <th>年龄</th>
+                                                    <th>性别</th>
+                                                    <th>专业</th>
+                                                    <th>班级</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <foreach name="list" item="vo">
+                                                <tr>
+                                                    <td>{$vo['username']}</td>
+                                                    <td>{$vo['name']}</td>
+                                                    <td>{$vo['age']}</td>
+                                                    <td>
+                                                        <if condition="$vo.sex eq 0">
+                                                            男
+                                                            <else/>
+                                                            女
+                                                        </if>
+                                                    </td>
+                                                    <td>{$vo['major']}</td>
+                                                    <td>{$vo['class']}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-default">
+                                                            <a href="__URL__/edit_student/id/{$vo.id}">编辑</a>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default">
+                                                            <a href="__URL__/delete_student/id/{$vo.id}"
+                                                            onclick="return confirm('你确定要删除这个学生吗？')"
+                                                            >删除</a>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                    </tbody>
+                                                </foreach>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                                <!-- 分页-->
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-7">
+                                        <ul class="pagination">
+                                            {$page}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#collapseTwo').collapse('show')
+    });
+    $(function () {
+        $('#collapseOne').collapse('hide')
+    });
+</script>
+<include file="Public:page_footer"/>
+</body>
+</html>

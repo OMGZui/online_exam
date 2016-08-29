@@ -1,0 +1,104 @@
+<div class="col-md-2 ">
+    <div class="panel-group" id="accordion">
+        <foreach name="admin" item="vo">
+        </foreach>
+        <php> //var_dump($admin['state']); </php>
+            <if condition="($admin['state'] lt 3)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne">
+                                <span class="glyphicon glyphicon-cog"></span>系统管理
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <a href="__MODULE__/Admin/change_password">修改密码</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="__MODULE__/Index/logout">退出系统</a>
+                        </div>
+                    </div>
+                </div>
+            </if>
+        <if condition="($admin['state'] eq 0) or ($admin['state'] eq 1) ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo">
+                                <span class="glyphicon glyphicon-user"></span>
+                                学生管理
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                            <a href="__MODULE__/Student/index">学生列表</a>
+                        </div>
+<!--                        <div class="panel-body">
+                            <a href="__MODULE__/Student/add_student">添加学生</a>
+                        </div>-->
+                    </div>
+                </div>
+            </if>
+            <if condition="($admin['state'] eq 0) or ($admin['state'] eq 1) ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree">
+                                <span class="glyphicon glyphicon-book"></span>试卷管理
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                            <a href="__MODULE__/Index/index">试卷列表</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="__MODULE__/Index/add_paper">添加试卷</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="__MODULE__/Index/paper_list">批改试卷</a>
+                        </div>
+                    </div>
+                </div>
+            </if>
+            <if condition="($admin['state'] lt 3)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour">
+                                <span class="glyphicon glyphicon-usd"></span>成绩管理
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                            <a href="__MODULE__/Grade/index">成绩列表</a>
+                        </div>
+                    </div>
+                </div>
+            </if>
+    </div>
+    <!--    <script type="text/javascript">
+            $(function () {
+                $('#collapseFour').collapse({
+                    toggle: false
+                })
+            });
+            $(function () {
+                $('#collapseTwo').collapse('show')
+            });
+            $(function () {
+                $('#collapseThree').collapse('hide')
+            });
+            $(function () {
+                $('#collapseOne').collapse('hide')
+            });
+        </script>-->
+</div>
